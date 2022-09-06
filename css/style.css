@@ -13,6 +13,8 @@
     --falu-red: hsla(0, 51%, 33%, 1);
 
     */
+@import url('https://fonts.googleapis.com/css2?family=Manrope&family=Noto+Sans&display=swap');
+
 
 html{
     background: url(/img/icecreambg.jpg) no-repeat center center fixed;
@@ -23,10 +25,51 @@ html{
 }
 body{
     color: #1a181fff;
+    font-family: 'Manrope', sans-serif;
 
+    padding-top: 70px;
 
 }
 
 h1, h2, h3 {
    color: #bb8418ff;
+    font-family: 'Noto Sans', sans-serif;
+    text-transform: uppercase;
+}
+
+ul {
+    display: flex;
+    flex-direction: row;
+    text-decoration: none;
+    list-style: none;
+    float: right;
+
+}
+a.active{
+    text-decoration: none;
+    font-weight: bold;
+    color:  #bb8418ff;
+}
+a{
+    padding: 10px;
+    text-decoration: none;
+    font-size: 1.5em;
+    color: white;
+    font-family: 'Noto Sans', sans-serif;
+    text-transform: uppercase;
+
+}
+
+nav{
+    height: auto;
+    clear: both;
+    padding-bottom: 70px;
+    padding-right: 50px;
+
+}
+section{
+    max-width: 900px;
+    margin: auto;
+    background-color: rgba(255, 255, 255, 0.17);
+    max-height: 100%;
 }
