@@ -17,6 +17,7 @@
 <body>
 
 
+
 <nav>
     <ul>
         <li><a href="index.html">Home</a></li>
@@ -28,8 +29,28 @@
     </ul>
 </nav>
 
+
+
 <section>
     <h1>Contact us if u have questions!</h1>
+
+    <form method="POST" id="formReq" >
+        <p>Name:</p>
+       <input type="text" id="contactName" name="contactName" placeholder="Name">
+        <p>Mob:</p>
+        <input type="text" id="contactNumber" name="contactNumber" placeholder="Mob">
+        <p>Email:</p>
+        <input type="text" id="contactEmail" name="contactEmail" placeholder="Email">
+
+
+       <p>Comments</p>
+           <textarea rows="4" cols="50" name="contactMessage" id="contactMessage" placeholder="Enter text here..." form="formReq">
+</textarea>
+        <p><input type="submit"  value="OK" >  </p>
+
+
+
+    </form>
 </section>
 
 <footer>
@@ -37,5 +58,11 @@
 </footer>
 
 
+<script src="js/form.js"></script>
+<!--<script>-->
+<!--    function myFunction() {-->
+<!--        document.getElementById("formReq").reset();-->
+<!--    }-->
+<!--</script>-->
 </body>
 </html>
