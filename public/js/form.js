@@ -28,9 +28,6 @@ function formComments(event) {
             body: JSON.stringify({contactName:contactName, contactNumber:contactNumber, contactEmail:contactEmail, contactMessage:contactMessage}) // body data type must match "Content-Type" header
         });
         return response.json(); // parses JSON response into native JavaScript objects
-
-
-
 }
 
     postData('http://localhost:3000/api/contacts')
@@ -42,20 +39,7 @@ function formComments(event) {
             elTxtMessage.value = '';
 
         });
-
 }
-function submitForm() {
-    // Get the first form with the name
-    // Usually the form name is not repeated
-    // but duplicate names are possible in HTML
-    // Therefore to work around the issue, enforce the correct index
-    var frm = document.getElementsByName('elFormReq')[0];
-    frm.submit(); // Submit the form
-    frm.reset();  // Reset all form data
-    return false; // Prevent page refresh
-}
-
-
 
 elFormReq.addEventListener('submit',formComments,false)
 
