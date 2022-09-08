@@ -15,6 +15,7 @@ const port = 3000
 // Start server
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
 
+//CRUD FÖR KONTAKT
 app.get("/api/contacts", (req, res, next) => {
     let sql = "select * from contact"
     let params = []
@@ -29,7 +30,6 @@ app.get("/api/contacts", (req, res, next) => {
         })
     })
 })
-
 
 app.get("/api/contacts/:id", (req, res, next) => {
     let sql = "select * from contact where contactId = ?"
@@ -46,15 +46,15 @@ app.get("/api/contacts/:id", (req, res, next) => {
     })
 })
 
-
 app.post("/api/contacts", (req, res, next) => {
     let data = {
         contactName: req.body.contactName,
         contactNumber: req.body.contactNumber,
-        contactEmail: req.body.contactEmail
+        contactEmail: req.body.contactEmail,
+        contactMessage: req.body.contactMessage
     }
-    let sql ='INSERT INTO contact (contactName, contactNumber, contactEmail) VALUES (?,?,?)'
-    let params =[data.contactName, data.contactNumber, data.contactEmail]
+    let sql ='INSERT INTO contact (contactName, contactNumber, contactEmail, contactMessage) VALUES (?,?,?,?)'
+    let params =[data.contactName, data.contactNumber, data.contactEmail, data.contactMessage]
     db.run(sql, params, function (err, result) {
         if (err){
             res.status(400).json({"error": err.message})
@@ -75,8 +75,8 @@ app.put("/api/contacts", (req, res, next) => {
         contactEmail: req.body.contactEmail,
         contactId: req.body.contactId
     }
-    let sql ='UPDATE contact SET contactName = ?, contactNumber = ?, contactEmail = ?, WHERE contactId = ?'
-    let params =[data.contactName, data.contactNumber, data.contactEmail, data.contactId]
+    let sql ='UPDATE contact SET contactName = ?, contactNumber = ?, contactEmail = ?, contactMessage = ?, WHERE contactId = ?'
+    let params =[data.contactName, data.contactNumber, data.contactEmail, data.contactId, data.contactMessage]
     db.run(sql, params, function (err, result) {
         if (err){
             res.status(400).json({"error": err.message})
@@ -94,6 +94,96 @@ app.delete("/api/contacts", (req, res, next) => {
     db.run(
         'DELETE FROM contact WHERE contactId = ?',
         req.body.contactId,
+        function (err, result) {
+            if (err){
+                res.status(400).json({"error": res.message})
+                return;
+            }
+            res.json({"message":"deleted", rows: this.changes})
+        })
+})
+
+//CRUD FÖR ICECREAM
+app.get("/api/icecream", (req, res, next) => {
+    let sql = "select * from icecream"
+    let params = []
+    db.all(sql, params, (err, rows) => {
+        if (err) {
+            res.status(400).json({"error":err.message});
+            return;
+        }
+        res.json({
+            "message":"success",
+            "icecream":rows
+        })
+    })
+})
+
+app.get("/api/icecream/:id", (req, res, next) => {
+    let sql = "select * from contact where icecreamId = ?"
+    let params = [req.params.id]
+    db.get(sql, params, (err, row) => {
+        if (err) {
+            res.status(400).json({"error":err.message});
+            return;
+        }
+        res.json({
+            "message":"success",
+            "icecream":row
+        })
+    })
+})
+
+app.post("/api/icecream", (req, res, next) => {
+    let data = {
+        icecreamName: req.body.icecreamName,
+        icecreamPrice: req.body.icecreamPrice,
+        icecreamFlavour: req.body.icecreamFlavour,
+        icecreamContent: req.body.icecreamContent,
+        icecreamDescription: req.body.icecreamDescription
+    }
+    let sql ='INSERT INTO icecream (icecreamName, icecreamPrice, icecreamFlavour, icecreamContent, icecreamDescription) VALUES (?,?,?,?,?)'
+    let params =[data.icecreamName, data.icecreamPrice, data.icecreamFlavour, data.icecreamContent, data.icecreamDescription]
+    db.run(sql, params, function (err, result) {
+        if (err){
+            res.status(400).json({"error": err.message})
+            return;
+        }
+        res.json({
+            "message": "success",
+            "icecream": data,
+            "id" : this.lastID
+        })
+    })
+})
+
+app.put("/api/contacts", (req, res, next) => {
+    let data = {
+        icecreamName: req.body.icecreamName,
+        icecreamPrice: req.body.icecreamPrice,
+        icecreamFlavour: req.body.icecreamFlavour,
+        icecreamContent: req.body.icecreamContent,
+        icecreamDescription: req.body.icecreamDescription
+    }
+    let sql ='UPDATE icecream SET icecreamName=?, icecreamPrice=?, icecreamFlavour=?, icecreamContent=?, icecreamDescription=?'
+    let params =[data.icecreamName, data.icecreamPrice, data.icecreamFlavour, data.icecreamContent, data.icecreamDescription]
+    db.run(sql, params, function (err, result) {
+        if (err){
+            res.status(400).json({"error": err.message})
+            return;
+        }
+        res.json({
+            "message": "success",
+            "icecream": data,
+            "id" : this.lastID
+        })
+    })
+})
+
+app.delete("/api/icecream", (req, res, next) => {
+    db.run(
+        'DELETE FROM icecream WHERE icecreamId = ?',
+        req.body.icecreamId,
         function (err, result) {
             if (err){
                 res.status(400).json({"error": res.message})

@@ -11,12 +11,18 @@ let db = new sqlite3.Database(DBSOURCE, (err) => {
             contactId INTEGER PRIMARY KEY,
             contactName TEXT,
             contactNumber TEXT,
-            contactEmail TEXT
+            contactEmail TEXT,
+            contactMessage TEXT
+            )
+            CREATE TABLE icecream (
+            icecreamId INTEGER PRIMARY KEY,
+            icecreamName TEXT,
+            icecreamPrice INTEGER,
+            icecreamFlavour TEXT,
+            icecreamContent TEXT,
+            icecreamDescription TEXT
             )`,(err) => {
             if (err) {
-            }else{
-                let insert = 'INSERT INTO contact (contactName, contactNumber, contactEmail) VALUES (?,?,?)'
-                db.run(insert, ["Jerry", "0700000001", "jerry@test.com"])
             }
         })
     }
