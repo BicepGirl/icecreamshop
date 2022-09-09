@@ -97,8 +97,7 @@ main#content-grid{
 
 header{
     grid-area: header;
-    background-color: black;
-    padding: 50px;
+    padding: 10px;
     color: white;
     text-align: center;
     font-size: 30px;
