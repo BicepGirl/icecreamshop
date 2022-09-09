@@ -140,10 +140,11 @@ app.post("/api/icecream", (req, res, next) => {
         icecreamPrice: req.body.icecreamPrice,
         icecreamFlavour: req.body.icecreamFlavour,
         icecreamContent: req.body.icecreamContent,
-        icecreamDescription: req.body.icecreamDescription
+        icecreamDescription: req.body.icecreamDescription,
+        icecreamImg: req.body.icecreamImg
     }
-    let sql ='INSERT INTO icecream (icecreamName, icecreamPrice, icecreamFlavour, icecreamContent, icecreamDescription) VALUES (?,?,?,?,?)'
-    let params =[data.icecreamName, data.icecreamPrice, data.icecreamFlavour, data.icecreamContent, data.icecreamDescription]
+    let sql ='INSERT INTO icecream (icecreamName, icecreamPrice, icecreamFlavour, icecreamContent, icecreamDescription, icecreamImg) VALUES (?,?,?,?,?,?)'
+    let params =[data.icecreamName, data.icecreamPrice, data.icecreamFlavour, data.icecreamContent, data.icecreamDescription, data.icecreamImg]
     db.run(sql, params, function (err, result) {
         if (err){
             res.status(400).json({"error": err.message})
@@ -157,16 +158,17 @@ app.post("/api/icecream", (req, res, next) => {
     })
 })
 
-app.put("/api/contacts", (req, res, next) => {
+app.put("/api/icecream", (req, res, next) => {
     let data = {
         icecreamName: req.body.icecreamName,
         icecreamPrice: req.body.icecreamPrice,
         icecreamFlavour: req.body.icecreamFlavour,
         icecreamContent: req.body.icecreamContent,
-        icecreamDescription: req.body.icecreamDescription
+        icecreamDescription: req.body.icecreamDescription,
+        icecreamImg: req.body.icecreamImg
     }
-    let sql ='UPDATE icecream SET icecreamName=?, icecreamPrice=?, icecreamFlavour=?, icecreamContent=?, icecreamDescription=?'
-    let params =[data.icecreamName, data.icecreamPrice, data.icecreamFlavour, data.icecreamContent, data.icecreamDescription]
+    let sql ='UPDATE icecream SET icecreamName=?, icecreamPrice=?, icecreamFlavour=?, icecreamContent=?, icecreamDescription=?, icecreamImg=?'
+    let params =[data.icecreamName, data.icecreamPrice, data.icecreamFlavour, data.icecreamContent, data.icecreamDescription, data.icecreamImg]
     db.run(sql, params, function (err, result) {
         if (err){
             res.status(400).json({"error": err.message})

@@ -20,7 +20,8 @@ let db = new sqlite3.Database(DBSOURCE, (err) => {
             icecreamPrice INTEGER,
             icecreamFlavour TEXT,
             icecreamContent TEXT,
-            icecreamDescription TEXT
+            icecreamDescription TEXT,
+            icecreamImg TEXT
             )`,(err) => {
             if (err) {
             }
