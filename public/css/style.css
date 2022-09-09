@@ -36,6 +36,7 @@ h1, h2, h3 {
     font-family: 'Noto Sans', sans-serif;
     text-transform: uppercase;
     background-color: transparent;
+    text-align: center;
 }
 
 ul {
@@ -74,6 +75,7 @@ section{
     margin: auto;
     background-color: rgba(255, 255, 255, 0.40);
     max-height: 100%;
+
 }
 
 
@@ -101,4 +103,123 @@ header{
     color: white;
     text-align: center;
     font-size: 30px;
+}
+
+
+#formReq {
+    width: 225px;
+    border: 5px solid rgba(234,234,234,1.00);
+    border-radius: 10px;
+    background-color: rgba(225,225,225,1.00);
+    padding: 20px;
+    font-size: 16px;
+    margin: 0 auto;
+}
+
+#formReq input[type=text],
+#formReq input[type=email],
+#formReq input[type=tel]{
+    width: 100%;
+    padding: 10px 5px 10px 10px;
+    margin: 5px 0 15px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 18px;
+}
+
+#formReq input[type=submit] {
+    width: 50%;
+    background-color: rgba(42,90,157,1.00);
+    color: rgba(255,255,255,1.00);
+    padding: 15px 20px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 18px;
+}
+#formReq textarea {
+    width: 100%;
+    height: 200px;
+    padding: 10px 5px 10px 10px;
+    margin: 5px 0 15px 0;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-family: inherit;
+    font-size: 18px;
+}
+
+#formReq input[type=submit]:hover {
+    background-color: rgba(101,151,222,1.00);
+}
+
+/* Tablet */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    body{
+        background-color: red;
+    }
+    p{
+        font-size: 14px;
+    }
+    h1{
+        font-size: 30px;
+    }
+    a{
+        font-size:  15px;
+    }
+    /*section.grid-container{*/
+    /*    margin: 20px auto;*/
+    /*    width: 1000px;*/
+
+    /*}*/
+
+    main{
+
+
+        grid-template-columns: 1fr 1fr;
+
+    }
+
+    #formReq {
+        width: 450px;
+        align-content: center;
+
+    }
+
+}
+
+/* Desktop */
+@media screen and (min-width: 1025px) {
+    body{
+        background-color: green;
+    }
+    /*section{*/
+    /*    margin: 20px auto;*/
+    /*    width: 1000px;*/
+
+    /*}*/
+    main{
+
+        grid-template-columns: 1fr 1fr;
+
+
+    }
+    #formReq {
+        width: 450px;
+
+
+    }
+
+    p{
+        font-size: 14px;
+    }
+    h1{
+        font-size: 30px;
+    }
+    a{
+        font-size:  15px;
+    }
 }
