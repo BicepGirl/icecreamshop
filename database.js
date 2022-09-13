@@ -45,7 +45,7 @@ let db = new sqlite3.Database(DBSOURCE, (err) => {
                     "CREAM, LIQUID SUGAR (SUGAR, WATER), SKIM MILK, WATER, SUGAR, WHEAT FLOUR, PEANUTS, COCOA (PROCESSED WITH ALKALI), BROWN SUGAR, EGG YOLKS, COCOA POWDER, PEANUT OIL, SOYBEAN OIL, BUTTER (CREAM, SALT), INVERT CANE SUGAR, SALT, CHOCOLATE LIQUOR, EGGS, TAPIOCA FLOUR, PEANUT FLOUR, PEANUT EXTRACT, VANILLA EXTRACT, EGG WHITES, GUAR GUM, COCOA BUTTER, NATURAL FLAVOR, CARRAGEENAN, SOY LECITHIN, BAKING SODA, MALTED BARLEY FLOUR. Allergy Information: CONTAINS MILK, EGGS, WHEAT, PEANUTS AND SOY.",
                     "The scoops of various chocolate ice cream scoops in a wafer, chocolate sprinkles, cookie crumble ans mini marshmellows",
                     "/img/chocolate_choke.jpg"])
-                //Linnas Kod
+
                 db.run(insert, ["Plain Jane",
                     10,
                     "Vanilla",
@@ -80,8 +80,6 @@ let db = new sqlite3.Database(DBSOURCE, (err) => {
                     "CREAM, LIQUID SUGAR (SUGAR, WATER), SKIM MILK, WATER, SUGAR, WHEAT FLOUR, PEANUTS, COCOA (PROCESSED WITH ALKALI), BROWN SUGAR, EGG YOLKS, COCOA POWDER, PEANUT OIL, SOYBEAN OIL, BUTTER (CREAM, SALT), INVERT CANE SUGAR, SALT, CHOCOLATE LIQUOR, EGGS, TAPIOCA FLOUR, PEANUT FLOUR, PEANUT EXTRACT, VANILLA EXTRACT, EGG WHITES, GUAR GUM, COCOA BUTTER, NATURAL FLAVOR, CARRAGEENAN, SOY LECITHIN, BAKING SODA, MALTED BARLEY FLOUR. Allergy Information: CONTAINS MILK, EGGS, WHEAT, PEANUTS AND SOY.",
                     "Two large scoops coconut and caramel ice cream in a bowl, topped with coconut flakes and frozen raspberry",
                     "/img/caramell.jpg"])
-
-                //
             }
         })
     }
