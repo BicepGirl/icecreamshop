@@ -122,6 +122,10 @@ main{
     grid-gap: 20px;
     padding: 30px;
 }
+
+td{
+    padding: 5px;
+}
 .button {
     font-family: 'Noto Sans', sans-serif;
     text-transform: uppercase;
