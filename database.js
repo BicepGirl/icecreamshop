@@ -46,7 +46,7 @@ let db = new sqlite3.Database(DBSOURCE, (err) => {
 
                       db.run(insert, ["Strawberry Jerry",
                                 10,
-                                "Vanilla, Strawberry"
+                                "Vanilla, Strawberry",
                                 "CREAM, LIQUID SUGAR (SUGAR, WATER), SKIM MILK, WATER, SUGAR, WHEAT FLOUR, PEANUTS, COCOA (PROCESSED WITH ALKALI), BROWN SUGAR, EGG YOLKS, COCOA POWDER, PEANUT OIL, SOYBEAN OIL, BUTTER (CREAM, SALT), INVERT CANE SUGAR, SALT, CHOCOLATE LIQUOR, EGGS, TAPIOCA FLOUR, PEANUT FLOUR, PEANUT EXTRACT, VANILLA EXTRACT, EGG WHITES, GUAR GUM, COCOA BUTTER, NATURAL FLAVOR, CARRAGEENAN, SOY LECITHIN, BAKING SODA, MALTED BARLEY FLOUR.\n" +
                                 "Allergy Information: CONTAINS MILK, EGGS, WHEAT, PEANUTS AND SOY.",
                                 "Vanilla and strawberry ice cream topped with fresh strawberry and raspberry",
