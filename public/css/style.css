@@ -172,7 +172,7 @@ header{
 /* Tablet */
 @media screen and (min-width: 768px) and (max-width: 1024px) {
     body{
-        background-color: red;
+        /*background-color: red;*/
     }
     p{
         font-size: 14px;
@@ -207,7 +207,7 @@ header{
 /* Desktop */
 @media screen and (min-width: 1025px) {
     body{
-        background-color: green;
+        /*background-color: green;*/
     }
     /*section{*/
     /*    margin: 20px auto;*/
