@@ -31,12 +31,18 @@ body{
 
 }
 
-h1, h2, h3 {
+h1, h3 {
    color: #bb8418ff;
     font-family: 'Noto Sans', sans-serif;
     text-transform: uppercase;
     background-color: transparent;
     text-align: center;
+}
+h2{
+    color: #bb8418ff;
+    font-family: 'Noto Sans', sans-serif; 
+    text-transform: uppercase;
+    font-size: 20px;
 }
 
 ul {
@@ -74,13 +80,14 @@ nav{
 section{
     max-width: 1000px;
     margin: auto;
-    background-color: rgba(255, 255, 255, 0.40);
     max-height: 100%;
 
 }
 
 
 .grid-container{
+    background-color: rgba(72, 90, 96, 0.84);
+    border-radius: 15px;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 300px auto auto 200px;
@@ -102,6 +109,24 @@ main{
     padding: 30px;
     margin: auto;
 
+}
+
+#icecream-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-gap: 20px;
+    padding: 30px;
+
+}
+.icecream-item{
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 30px;
+    border-radius: 10px;
+    margin: auto;
+}
+.img-border{
+    border-radius: 5px;
 }
 
 header{
