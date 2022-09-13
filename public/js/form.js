@@ -3,6 +3,7 @@ const elTxtName = document.querySelector('#contactName')
 const elTxtMob = document.querySelector('#contactNumber')
 const elTxtEmail = document.querySelector('#contactEmail')
 const elTxtMessage = document.querySelector('#contactMessage')
+const elTxtShowSuccess = document.querySelector('#showSuccess')
 
 
 function formComments(event) {
@@ -11,6 +12,9 @@ function formComments(event) {
     let contactNumber = elTxtMob.value;
     let contactEmail = elTxtEmail.value;
     let contactMessage = elTxtMessage.value;
+    let showSuccess = elTxtShowSuccess.value;
+
+
 
     async function postData(url = '', data = {}) {
         // Default options are marked with *
@@ -38,8 +42,16 @@ function formComments(event) {
             elTxtEmail.value = '';
             elTxtMessage.value = '';
 
+            document.getElementById("showSuccess").style.display = "block";
+
+
+
+
         });
 }
 
+
+
 elFormReq.addEventListener('submit',formComments,false)
+
 

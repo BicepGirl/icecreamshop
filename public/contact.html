@@ -35,17 +35,19 @@
     <h1>Contact us if u have questions!</h1>
 
     <form method="POST" id="formReq" >
-        <p>Name:</p>
-       <input type="text" id="contactName" name="contactName" placeholder="Name">
-        <p>Mob:</p>
-        <input type="text" id="contactNumber" name="contactNumber" placeholder="Mob">
-        <p>Email:</p>
-        <input type="text" id="contactEmail" name="contactEmail" placeholder="Email">
+        <label>Name:</label>
+       <input type="text" id="contactName" name="contactName" placeholder="Name" required minlength="3" maxlength="30" autofocus  >
+        <label>Mob:<small>Format:012-345-6789</small></label>
+        <input type="tel" id="contactNumber" name="contactNumber" placeholder="012-345-6789" required pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
+        <label>Email:<small>Anything@gmail.com</small></label>
+        <input type="email" id="contactEmail" name="contactEmail" placeholder="Jens@gmail.com" required pattern=".+@.+\.com">
 
 
-       <p>Comments</p>
-           <textarea rows="4" cols="50" name="contactMessage" id="contactMessage" placeholder="Enter text here..." form="formReq">
+
+       <label>Message:</label>
+           <textarea required minlength="10" rows="4" cols="50" name="contactMessage" id="contactMessage" placeholder="Enter text here..." form="formReq">
 </textarea>
+        <label id="showSuccess" style="display: none">*Success</label>
         <p><input type="submit"  value="OK" >  </p>
 
 
@@ -57,12 +59,20 @@
 
 </footer>
 
+<script>
+    const element = document.getElementById("contactName");
 
+    element.addEventListener("click", mySecondFunction);
+
+
+
+
+    function mySecondFunction() {
+        document.getElementById("showSuccess").style.display = "none";
+    }
+
+</script>
 <script src="js/form.js"></script>
-<!--<script>-->
-<!--    function myFunction() {-->
-<!--        document.getElementById("formReq").reset();-->
-<!--    }-->
-<!--</script>-->
+
 </body>
 </html>
