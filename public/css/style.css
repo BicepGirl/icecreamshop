@@ -86,8 +86,6 @@ section{
 
 
 .grid-container{
-    background-color: rgba(72, 90, 96, 0.84);
-    border-radius: 15px;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 300px auto auto 200px;
@@ -99,6 +97,8 @@ section{
     grid-gap: 20px;
 }
 main{
+    background-color: rgba(72, 90, 96, 0.84);
+    border-radius: 15px;
 
 }
 
