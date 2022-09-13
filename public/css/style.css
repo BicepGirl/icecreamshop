@@ -24,9 +24,8 @@ html{
     background-size: cover;
 }
 body{
-    color: #1a181fff;
+    color: white;
     font-family: 'Manrope', sans-serif;
-
     padding-top: 70px;
 
 }
@@ -117,6 +116,8 @@ main{
 #index-grid{
     display: grid;
     grid-template-columns: 1fr 1fr;
+    grid-template-areas: "header header"
+    "button button";
     grid-gap: 20px;
     padding: 30px;
     margin: auto;
@@ -139,7 +140,9 @@ main{
 }
 
 .index-button{
+    grid-area: button;
     margin: auto;
+    justify-items: center;
 }
 
 #icecream-grid{
