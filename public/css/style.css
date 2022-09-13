@@ -27,6 +27,7 @@ body{
     color: white;
     font-family: 'Manrope', sans-serif;
     padding-top: 70px;
+    transition-timing-function: ease-in;
 
 }
 .index-table{
