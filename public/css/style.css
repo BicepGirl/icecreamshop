@@ -101,13 +101,9 @@ section{
     grid-gap: 20px;
 }
 main{
-<<<<<<< HEAD
     background-color: rgba(72, 90, 96, 0.84);
     border-radius: 15px;
-
-=======
     margin: auto;
->>>>>>> 636869cc1893b7293a8b79d9ff91915f403e3698
 }
 
 #content-grid{
