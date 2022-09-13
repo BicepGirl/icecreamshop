@@ -30,6 +30,10 @@ body{
     padding-top: 70px;
 
 }
+.index-table{
+    text-align: center;
+    margin: auto;
+}
 
 h1, h3 {
    color: #bb8418ff;
@@ -81,7 +85,7 @@ section{
     max-width: 1000px;
     margin: auto;
     max-height: 100%;
-
+    border-radius: 15px;
 }
 
 
@@ -99,7 +103,7 @@ section{
     grid-gap: 20px;
 }
 main{
-
+    margin: auto;
 }
 
 #content-grid{
@@ -109,6 +113,36 @@ main{
     padding: 30px;
     margin: auto;
 
+}
+#index-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+    padding: 30px;
+    margin: auto;
+}
+.button {
+    font-family: 'Noto Sans', sans-serif;
+    text-transform: uppercase;
+    background-color: #bb8418ff;
+    color: black;
+    border: 2px solid #bb8418ff;
+    border-radius: 12px;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+.button:hover{
+    color: white;
+}
+
+.index-button{
+    margin: auto;
 }
 
 #icecream-grid{
