@@ -165,10 +165,11 @@ app.put("/api/icecream", (req, res, next) => {
         icecreamFlavour: req.body.icecreamFlavour,
         icecreamContent: req.body.icecreamContent,
         icecreamDescription: req.body.icecreamDescription,
-        icecreamImg: req.body.icecreamImg
+        icecreamImg: req.body.icecreamImg,
+        icecreamId: req.body.icecreamId
     }
-    let sql ='UPDATE icecream SET icecreamName=?, icecreamPrice=?, icecreamFlavour=?, icecreamContent=?, icecreamDescription=?, icecreamImg=?'
-    let params =[data.icecreamName, data.icecreamPrice, data.icecreamFlavour, data.icecreamContent, data.icecreamDescription, data.icecreamImg]
+    let sql ='UPDATE icecream SET icecreamName=?, icecreamPrice=?, icecreamFlavour=?, icecreamContent=?, icecreamDescription=?, icecreamImg=? WHERE icecreamId=?'
+    let params =[data.icecreamName, data.icecreamPrice, data.icecreamFlavour, data.icecreamContent, data.icecreamDescription, data.icecreamImg, data.icecreamId]
     db.run(sql, params, function (err, result) {
         if (err){
             res.status(400).json({"error": err.message})
