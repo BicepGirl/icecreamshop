@@ -27,7 +27,6 @@ body{
     color: white;
     font-family: 'Manrope', sans-serif;
     padding-top: 70px;
-    transition-timing-function: ease-in;
 
 }
 .index-table{
@@ -121,8 +120,7 @@ main{
     grid-template-areas: "header header"
     "button button";
     grid-gap: 20px;
-    /* padding: 30px;
-   margin: auto;*/
+    padding: 30px;
 }
 .button {
     font-family: 'Noto Sans', sans-serif;
