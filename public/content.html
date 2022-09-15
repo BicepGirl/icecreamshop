@@ -31,76 +31,11 @@
     </nav>
 
     <main id="content-grid">
-        <article class="icecream-content" onclick="mySecondFunction()" v-for="content in icecream">
+        <article class="icecream-content"  v-for="content in icecream">
             <img class="img-border" v-bind:src="content.icecreamImg" alt="chocolate ice cream in a wafer" width="200">
           <div><h2>{{ content.icecreamName }}</h2> <p>{{content.icecreamContent}}</p></div>
         </article>
-        <script>
-            const element = document.getElementById("icecream-grid");
 
-            element.addEventListener("click", mySecondFunction);
-
-
-
-
-            function mySecondFunction() {
-                document.getElementById("icecream-content").style.backgroundColor="red";
-            }
-
-        </script>
-
-       <!-- <article>
-            <h2>Chocolate Choke</h2>
-            <p> lorem ipsum är kul, typ. Sen ska det vara ingredients här va. Så allergiker kan veta vad fan de stoppar i sig. osv, mjöl typ</p>
-        </article>
-
-        <article>
-            <img src="img/plain_jane.jpg" alt="choclate ice cream in a wafer" width="200px">
-        </article>
-
-        <article>
-            <h2>Plain_Jane</h2>
-            <p> lorem ipsum är kul, typ. Sen ska det vara ingredients här va. Så allergiker kan veta vad fan de stoppar i sig. osv, mjöl typ</p>
-        </article>
-
-        <article>
-            <img src="img/unicorn_droppings.jpg" alt="choclate ice cream in a wafer" width="200px">
-        </article>
-
-        <article>
-            <h2>Unicorn_droppings</h2>
-            <p> lorem ipsum är kul, typ. Sen ska det vara ingredients här va. Så allergiker kan veta vad fan de stoppar i sig. osv, mjöl typ</p>
-        </article>
-
-        <article>
-            <img src="img/strawberry_jerry.jpg" alt="choclate ice cream in a wafer" width="200px">
-
-        </article>
-
-        <article>
-            <h2>Strawberry Jerry</h2>
-            <p> lorem ipsum är kul, typ. Sen ska det vara ingredients här va. Så allergiker kan veta vad fan de stoppar i sig. osv, mjöl typ</p>
-        </article>
-
-        <article>
-            <img src="img/caramell.jpg" alt="choclate ice cream in a wafer" width="200px">
-
-        </article>
-
-        <article>
-            <h2>Caramell</h2>
-            <p> lorem ipsum är kul, typ. Sen ska det vara ingredients här va. Så allergiker kan veta vad fan de stoppar i sig. osv, mjöl typ</p>
-        </article>
-
-        <article>
-            <img src="img/rainbow.jpg" alt="choclate ice cream in a wafer" width="200px">
-
-        </article>
-
-        <article>
-            <h2>Rainbow</h2>
-            <p> lorem ipsum är kul, typ. Sen ska det vara ingredients här va. Så allergiker kan veta vad fan de stoppar i sig. osv, mjöl typ</p>
-        </article>-->
 
     </main>
     <footer>

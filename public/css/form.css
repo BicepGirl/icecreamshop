@@ -55,7 +55,7 @@
 }
 
 #formReq input:focus {
-    background-color: rgb(40, 224, 14);
+    background-color: rgb(253,255,184,1.00);
 }
 
 #showSuccess{
