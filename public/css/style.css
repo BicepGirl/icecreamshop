@@ -107,11 +107,23 @@ main{
 }
 
 #content-grid{
+    background: none;
+    padding: 30px;
     display: grid;
-    grid-template-columns: 200px 1fr;
+    grid-template-columns: 1fr;
     grid-gap: 20px;
    /* padding: 30px;
     margin: auto;*/
+
+}
+.icecream-content{
+    color:#485a60ff;
+    background-color: rgba(255, 255, 255);
+    padding: 30px;
+    border-radius: 10px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
 
 }
 #index-grid{
@@ -150,6 +162,7 @@ td{
 }
 
 #icecream-grid{
+    background: none;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr;
@@ -159,7 +172,8 @@ td{
 
 }
 .icecream-item{
-    background-color: rgba(255, 255, 255, 0.7);
+    background-color: rgba(255, 255, 255);
+    color:#485a60ff;
     padding: 30px;
     border-radius: 10px;
     align-content: center;

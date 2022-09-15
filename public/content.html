@@ -31,9 +31,9 @@
     </nav>
 
     <main id="content-grid">
-        <article v-for="content in icecream">
-            <img v-bind:src="content.icecreamImg" alt="chocolate ice cream in a wafer" width="200">
-            <h2>{{ content.icecreamName }}</h2> <p>{{content.icecreamContent}}</p>
+        <article class="icecream-content" v-for="content in icecream">
+            <img class="img-border" v-bind:src="content.icecreamImg" alt="chocolate ice cream in a wafer" width="200">
+           <h2>{{ content.icecreamName }}</h2> <p>{{content.icecreamContent}}</p>
         </article>
 
        <!-- <article>
