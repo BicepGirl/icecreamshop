@@ -33,8 +33,10 @@
 
     <main id="icecream-grid">
         <article class="icecream-item" v-for="ice in icecream">
-            <img class="img-border" v-bind:src="ice.icecreamImg"  alt="choclate ice cream in a wafer" width="260">
-            <h2>{{ ice.icecreamName }}</h2> <p>{{ice.icecreamDescription}}</p> <h6>Price: ${{ice.icecreamPrice}}</h6>
+            <div class="divImg"><img class="img-border" v-bind:src="ice.icecreamImg"  alt="choclate ice cream in a wafer" width="260">
+                <h2>{{ ice.icecreamName }}</h2> <p>{{ice.icecreamDescription}}</p> <h6>Price: ${{ice.icecreamPrice}}</h6></div>
+
+
         </article>
     </main>
 
@@ -53,6 +55,11 @@
 
                 icecream: [],
                 dummyImg: 'img/rainbow.jpg'
+            }
+        },
+        methods: {
+            showMessage() {
+                this.message = 'Hej ' + this.yourName + '!'
             }
         },
         mounted(){

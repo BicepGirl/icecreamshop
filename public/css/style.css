@@ -103,7 +103,7 @@ main{
     background-color: rgba(72, 90, 96, 0.84);
     border-radius: 15px;
     margin: auto;
-    justify-items: center;
+
 }
 
 #content-grid{
@@ -112,8 +112,7 @@ main{
     display: grid;
     grid-template-columns: 1fr;
     grid-gap: 20px;
-   /* padding: 30px;
-    margin: auto;*/
+
 
 }
 .icecream-content{
@@ -121,8 +120,10 @@ main{
     background-color: rgba(255, 255, 255);
     padding: 30px;
     border-radius: 10px;
-    display: flex;
+    display: inline-flex;
     gap: 20px;
+    flex-direction: column;
+    width: 250px;
     align-items: center;
 
 }
@@ -164,10 +165,10 @@ td{
 #icecream-grid{
     background: none;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr;
     grid-gap: 20px;
-    /* padding: 30px;
-   margin: auto;*/
+    width: 300px;
+   margin: auto;
 
 }
 .icecream-item{
@@ -176,8 +177,7 @@ td{
     padding: 30px;
     border-radius: 10px;
     align-content: center;
-    /* margin: auto;
-     */
+
 }
 .img-border{
     border-radius: 5px;
@@ -196,6 +196,48 @@ header{
 
 /* Tablet */
 @media screen and (min-width: 768px) and (max-width: 1024px) {
+    /* div class only for iceCream page  */
+    .divImg {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .icecream-content{
+        color:#485a60ff;
+        background-color: rgba(255, 255, 255);
+        padding: 30px;
+        border-radius: 10px;
+        display: flex;
+        gap: 20px;
+        align-items: center;
+        flex-direction: row;
+        width: revert;
+
+    }
+    #content-grid{
+        background: none;
+        padding: 30px;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-gap: 20px;
+
+    }
+
+    #icecream-grid{
+        background: none;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 20px;
+        width: revert;
+    }
+    .icecream-item{
+        background-color: rgba(255, 255, 255);
+        color:#485a60ff;
+        padding: 30px;
+        border-radius: 10px;
+        align-content: center;
+
+    }
     body{
         /*background-color: red;*/
     }
@@ -208,15 +250,9 @@ header{
     a{
         font-size:  15px;
     }
-    /*section.grid-container{*/
-    /*    margin: 20px auto;*/
-    /*    width: 1000px;*/
 
-    /*}*/
 
     main{
-
-
         grid-template-columns: 1fr 1fr;
 
     }
@@ -224,7 +260,6 @@ header{
     #formReq {
         width: 450px;
         align-content: center;
-
     }
 
 }
@@ -232,25 +267,45 @@ header{
 /* Desktop */
 @media screen and (min-width: 1025px) {
 
+    .icecream-content{
+        color:#485a60ff;
+        background-color: rgba(255, 255, 255);
+        padding: 30px;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        align-items: center;
+        width: revert;
+
+    }
+    #icecream-grid{
+        background: none;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 20px;
+        width: revert;
+
+    }
+    .icecream-item{
+        background-color: rgba(255, 255, 255);
+        color:#485a60ff;
+        padding: 30px;
+        border-radius: 10px;
+        align-content: center;
+
+    }
 
     body{
         /*background-color: green;*/
     }
-    /*section{*/
-    /*    margin: 20px auto;*/
-    /*    width: 1000px;*/
 
-    /*}*/
     main{
-
         grid-template-columns: 1fr 1fr;
-
 
     }
     #formReq {
         width: 450px;
-
-
     }
 
     p{
