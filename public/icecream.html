@@ -16,7 +16,7 @@
 </head>
 <body>
 
-<section class="grid-container">
+<section class="grid-container" id="app">
     <header>
         <h1>Ice Creamery</h1>
     </header>
@@ -30,61 +30,92 @@
         </ul>
     </nav>
 
+<!--    <main id="icecream-grid">-->
+
+<!--    <article class="icecream-item">-->
+<!--        <img class="img-border" src="img/chocolate_choke.jpg" alt="choclate ice cream in a wafer" width="200px">-->
+<!--        <h2>Chocolate Choke</h2>-->
+<!--        <p> BESKRIVNING AV GLASS</p>-->
+<!--        <h6> Price: 7$</h6>-->
+
+<!--    </article>-->
+
+<!--    <article class="icecream-item">-->
+<!--        <img class="img-border" src="img/plain_jane.jpg" alt="choclate ice cream in a wafer" width="200px"><h2>Plain_Jane</h2>-->
+<!--        <p> BESKRIVNING AV GLASS</p>-->
+<!--        <h6> Price: 7$</h6>-->
+<!--    </article>-->
+
+
+<!--    <article class="icecream-item">-->
+<!--        <img class="img-border" src="img/unicorn_droppings.jpg" alt="choclate ice cream in a wafer" width="200px">-->
+<!--        <h2>Unicorn_droppings</h2>-->
+<!--        <p> BESKRIVNING AV GLASS</p>-->
+<!--        <h6> Price: 7$</h6>-->
+<!--    </article>-->
+
+
+<!--    <article class="icecream-item">-->
+<!--        <img class="img-border" src="img/strawberry_jerry.jpg" alt="choclate ice cream in a wafer" width="200px">-->
+<!--        <h2>Strawberry Jerry</h2>-->
+<!--        <p> BESKRIVNING AV GLASS</p>-->
+<!--        <h6> Price: 7$</h6>-->
+<!--    </article>-->
+
+<!--    <article class="icecream-item">-->
+<!--        <img  class="img-border"src="img/caramell.jpg" alt="choclate ice cream in a wafer" width="200px">-->
+<!--        <h2>Caramell</h2>-->
+<!--        <p> BESKRIVNING AV GLASS</p>-->
+<!--        <h6> Price: 7$</h6>-->
+<!--    </article>-->
+
+
+<!--    <article class="icecream-item">-->
+<!--        <img class="img-border" src="img/rainbow.jpg" alt="choclate ice cream in a wafer" width="200px">-->
+<!--        <h2>Rainbow</h2>-->
+<!--        <p> BESKRIVNING AV GLASS</p>-->
+<!--        <h6> Price: 7$</h6>-->
+<!--    </article>-->
+<!--        -->
+<!--    </main>-->
     <main id="icecream-grid">
-
-    <article class="icecream-item">
-        <img class="img-border" src="img/chocolate_choke.jpg" alt="choclate ice cream in a wafer" width="200px">
-        <h2>Chocolate Choke</h2>
-        <p> BESKRIVNING AV GLASS</p>
-        <h6> Price: 7$</h6>
-
-    </article>
-
-    <article class="icecream-item">
-        <img class="img-border" src="img/plain_jane.jpg" alt="choclate ice cream in a wafer" width="200px"><h2>Plain_Jane</h2>
-        <p> BESKRIVNING AV GLASS</p>
-        <h6> Price: 7$</h6>
-    </article>
-
-
-    <article class="icecream-item">
-        <img class="img-border" src="img/unicorn_droppings.jpg" alt="choclate ice cream in a wafer" width="200px">
-        <h2>Unicorn_droppings</h2>
-        <p> BESKRIVNING AV GLASS</p>
-        <h6> Price: 7$</h6>
-    </article>
-
-
-    <article class="icecream-item">
-        <img class="img-border" src="img/strawberry_jerry.jpg" alt="choclate ice cream in a wafer" width="200px">
-        <h2>Strawberry Jerry</h2>
-        <p> BESKRIVNING AV GLASS</p>
-        <h6> Price: 7$</h6>
-    </article>
-
-    <article class="icecream-item">
-        <img  class="img-border"src="img/caramell.jpg" alt="choclate ice cream in a wafer" width="200px">
-        <h2>Caramell</h2>
-        <p> BESKRIVNING AV GLASS</p>
-        <h6> Price: 7$</h6>
-    </article>
-
-
-    <article class="icecream-item">
-        <img class="img-border" src="img/rainbow.jpg" alt="choclate ice cream in a wafer" width="200px">
-        <h2>Rainbow</h2>
-        <p> BESKRIVNING AV GLASS</p>
-        <h6> Price: 7$</h6>
-    </article>
-        
+        <article class="icecream-item" v-for="ice in icecream">
+            <img class="img-border" v-bind:src="ice.icecreamImg"  alt="choclate ice cream in a wafer" width="260">
+            <h2>{{ ice.icecreamName }}</h2> <p>{{ice.icecreamDescription}}</p> <h6>Price: ${{ice.icecreamPrice}}</h6>
+        </article>
     </main>
+
+
+
+
+    <!--    </main>-->
 
 </section>
 
 <footer>
 
 </footer>
-
-
+<script src="https://unpkg.com/vue@3"></script>
+<script>
+    Vue.createApp({
+        data() {
+            return {
+                msg: 'Mina böcker:',
+                icecream: [],
+                dummyImg: 'img/rainbow.jpg'
+            }
+        },
+        mounted(){
+            fetch('http://localhost:3000/api/icecream')
+                .then((response) => {
+                    return response.json();
+                })
+                .then((data) => {
+                    console.log(data);
+                    this.icecream = data.icecream;
+                });
+        }
+    }).mount('#app')
+</script>
 </body>
 </html>
