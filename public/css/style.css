@@ -165,7 +165,6 @@ td{
     background: none;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
     grid-gap: 20px;
     /* padding: 30px;
    margin: auto;*/
