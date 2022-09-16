@@ -161,6 +161,9 @@ td{
     margin: auto;
     justify-items: center;
 }
+.button:hover{
+    background-color: #802929ff;
+}
 
 #icecream-grid{
     background: none;
@@ -304,10 +307,6 @@ header{
         /*background-color: green;*/
     }
 
-    main{
-        grid-template-columns: 1fr 1fr;
-
-    }
     #formReq {
         width: 450px;
     }
@@ -320,5 +319,10 @@ header{
     }
     a{
         font-size:  15px;
+    }
+
+    .creator-css{
+        max-width: 1000px;
+        margin: 0;
     }
 }
