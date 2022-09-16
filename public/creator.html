@@ -27,38 +27,39 @@
 <script src="https://unpkg.com/vue@3"></script>
 <script>
   const app = Vue.createApp({
-    data(){
-      return{
-        newIceCream: '',
-        newFlavour: '',
-        newDescription: '',
-        icecream:[
-          {
-            id: 1,
-            icecreamName: 'Salty Sailor',
-            icecreamFlavour: 'Licorice',
-            icecreamDescription: 'Licorice flavoured ice cream with salty licorice bits inside!'
+      data: function () {
+          return {
+              newIceCream: '',
+              newFlavour: '',
+              newDescription: '',
+              icecream: [
+                  {
+                      id: 1,
+                      icecreamName: 'Salty Sailor',
+                      icecreamFlavour: 'Licorice',
+                      icecreamDescription: 'Licorice flavoured ice cream with salty licorice bits inside!',
+                      prio: false
+                  }
+              ],
+              nextIceCreamId: 2
           }
-        ],
-        nextIceCreamId: 2
-      }
-    },
+      },
     methods: {
-      addIceCream(){
-        this.icecream.push({
-          id: this.nextIceCreamId++,
-          icecreamName: this.newIceCream,
-          icecreamFlavour: this.newFlavour,
-          icecreamDescription: this.newDescription
-        })
-                this.newIceCream = '', this.newFlavour = '', this.newDescription = ''
-      },
-      deleteIceCream(id){
-        this.icecream.splice(id, 1)
-      },
-      changePrio(id){
-        id.prio = true
-      }
+        addIceCream: function () {
+            this.icecream.push({
+                id: this.nextIceCreamId++,
+                icecreamName: this.newIceCream,
+                icecreamFlavour: this.newFlavour,
+                icecreamDescription: this.newDescription
+            })
+            this.newIceCream = '', this.newFlavour = '', this.newDescription = ''
+        },
+        deleteIceCream: function (id) {
+            this.icecream.splice(id, 1)
+        },
+        changePrio: function (id) {
+            id.prio = true
+        }
     }
   }).mount('#app')
 </script>
