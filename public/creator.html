@@ -5,25 +5,30 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
     <title>Create your Ice Cream</title>
 </head>
 <body>
-<div id="app">
-  <form v-on:submit.prevent="addIceCream">
-    <label>Create your Ice Cream!</label>
-    <input type="text" placeholder="Name" v-model="newIceCream">
-    <input type="text" placeholder="Flavour" v-model="newFlavour">
-    <input type="text" placeholder="Description" v-model="newDescription">
-    <button>Add</button>
-  </form>
-    <ul>
-        <li v-for="(icecreams, index) in icecream" :key="icecreams.id" :class="{prio: icecreams.prio}">
-            {{icecreams.id}} {{icecreams.icecreamName}} {{icecreams.icecreamFlavour}} {{icecreams.icecreamContent}} {{icecreams.icecreamDescription}}
-            <button @click="deleteIceCream(index)">Delete</button>
-            <button @click="changePrio(icecreams)">Favorite</button>
-        </li>
-    </ul>
-</div>
+<main>
+    <div id="app">
+        <form v-on:submit.prevent="addIceCream">
+            <label>Create your Ice Cream!</label>
+            <input type="text" placeholder="Name" v-model="newIceCream">
+            <input type="text" placeholder="Flavour" v-model="newFlavour">
+            <input type="text" placeholder="Description" v-model="newDescription">
+            <button>Add</button>
+        </form>
+        <ul>
+            <li v-for="(icecreams, index) in icecream" :key="icecreams.id" :class="{prio: icecreams.prio}">
+                {{icecreams.id}} {{icecreams.icecreamName}} {{icecreams.icecreamFlavour}} {{icecreams.icecreamContent}} {{icecreams.icecreamDescription}}
+                <button @click="deleteIceCream(index)">Delete</button>
+                <button @click="changePrio(icecreams)">Favorite</button>
+            </li>
+        </ul>
+    </div>
+</main>
 <script src="https://unpkg.com/vue@3"></script>
 <script>
   const app = Vue.createApp({

@@ -192,7 +192,7 @@ header{
     font-size: 30px;
 }
 .prio{
-    color: red;
+    color: green;
 }
 
 
@@ -320,8 +320,5 @@ header{
     }
     a{
         font-size:  15px;
-    }
-    .prio{
-        color: rebeccapurple;
     }
 }
