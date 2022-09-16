@@ -11,11 +11,10 @@
 <div id="app">
   <form v-on:submit.prevent="addIceCream">
     <label>Create your Ice Cream!</label>
-    <input type="text" placeholder="Name" v-model="newIcecream">
+    <input type="text" placeholder="Name" v-model="newIceCream">
     <input type="text" placeholder="Flavour" v-model="newFlavour">
-    <input type="text" placeholder="Content" v-model="newContent">
     <input type="text" placeholder="Description" v-model="newDescription">
-    <button v-if="newIceCream.length > 0">Add</button>
+    <button>Add</button>
   </form>
     <ul>
         <li v-for="(icecreams, index) in icecream" :key="icecreams.id" :class="{prio: icecreams.prio}">
@@ -32,14 +31,12 @@
       return{
         newIceCream: '',
         newFlavour: '',
-        newContent: '',
         newDescription: '',
         icecream:[
           {
             id: 1,
             icecreamName: 'Salty Sailor',
             icecreamFlavour: 'Licorice',
-            icecreamContent: 'Licorice Ice Cream, Salty licorice bits',
             icecreamDescription: 'Licorice flavoured ice cream with salty licorice bits inside!'
           }
         ],
@@ -52,10 +49,9 @@
           id: this.nextIceCreamId++,
           icecreamName: this.newIceCream,
           icecreamFlavour: this.newFlavour,
-          icecreamContent: this.newContent,
           icecreamDescription: this.newDescription
         })
-                this.newIceCream = '', this.newFlavour = '', this.newContent = '', this.newDescription = ''
+                this.newIceCream = '', this.newFlavour = '', this.newDescription = ''
       },
       deleteIceCream(id){
         this.icecream.splice(id, 1)
