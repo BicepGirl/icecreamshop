@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Create your Ice Cream</title>
+</head>
+<body>
+<div id="app">
+  <form v-on:submit.prevent="addIceCream">
+    <label>Create your Ice Cream!</label>
+    <input type="text" placeholder="Name" v-model="newIcecream">
+    <input type="text" placeholder="Flavour" v-model="newFlavour">
+    <input type="text" placeholder="Content" v-model="newContent">
+    <input type="text" placeholder="Description" v-model="newDescription">
+    <button v-if="newIceCream.length > 0">Add</button>
+  </form>
+    <ul>
+        <li v-for="(icecreams, index) in icecream" :key="icecreams.id" :class="{prio: icecreams.prio}">
+            {{icecreams.id}} {{icecreams.icecreamName}} {{icecreams.icecreamFlavour}} {{icecreams.icecreamContent}} {{icecreams.icecreamDescription}}
+            <button @click="deleteIceCream(index)">Delete</button>
+            <button @click="changePrio(icecreams)">Favorite</button>
+        </li>
+    </ul>
+</div>
+<script src="https://unpkg.com/vue@3"></script>
+<script>
+  const app = Vue.createApp({
+    data(){
+      return{
+        newIceCream: '',
+        newFlavour: '',
+        newContent: '',
+        newDescription: '',
+        icecream:[
+          {
+            id: 1,
+            icecreamName: 'Salty Sailor',
+            icecreamFlavour: 'Licorice',
+            icecreamContent: 'Licorice Ice Cream, Salty licorice bits',
+            icecreamDescription: 'Licorice flavoured ice cream with salty licorice bits inside!'
+          }
+        ],
+        nextIceCreamId: 2
+      }
+    },
+    methods: {
+      addIceCream(){
+        this.icecream.push({
+          id: this.nextIceCreamId++,
+          icecreamName: this.newIceCream,
+          icecreamFlavour: this.newFlavour,
+          icecreamContent: this.newContent,
+          icecreamDescription: this.newDescription
+        })
+                this.newIceCream = '', this.newFlavour = '', this.newContent = '', this.newDescription = ''
+      },
+      deleteIceCream(id){
+        this.icecream.splice(id, 1)
+      },
+      changePrio(id){
+        id.prio = true
+      }
+    }
+  }).mount('#app')
+</script>
+</body>
+</html>
