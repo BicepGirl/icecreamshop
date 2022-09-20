@@ -50,10 +50,10 @@ h2{
 
 ul {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     text-decoration: none;
     list-style: none;
-    float: right;
+    align-items: center;
 
 }
 a.active{
@@ -75,7 +75,7 @@ nav{
     grid-area: navigation;
     height: auto;
     clear: both;
-    padding-bottom: 70px;
+    padding-bottom: 20px;
     padding-right: 50px;
 
 
@@ -203,12 +203,32 @@ header{
 
 /* Tablet */
 @media screen and (min-width: 768px) and (max-width: 1024px) {
+
+    #formReq {
+        width: 450px;
+        align-content: center;
+    }
+
+
     /* div class only for iceCream page  */
     .divImg {
         display: flex;
         flex-direction: column;
         align-items: center;
+
     }
+    ul {
+        display: flex;
+        flex-direction: row;
+        text-decoration: none;
+        list-style: none;
+        float: right;
+
+    }
+    nav{
+        padding-bottom: 70px;
+    }
+
     .icecream-content{
         color:#485a60ff;
         background-color: rgba(255, 255, 255);
@@ -264,15 +284,24 @@ header{
 
     }
 
-    #formReq {
-        width: 450px;
-        align-content: center;
-    }
 
 }
 
 /* Desktop */
 @media screen and (min-width: 1025px) {
+
+    ul {
+        display: flex;
+        flex-direction: row;
+        text-decoration: none;
+        list-style: none;
+        float: right;
+
+    }
+    nav{
+
+        padding-bottom: 70px;
+           }
 
     .icecream-content{
         color:#485a60ff;

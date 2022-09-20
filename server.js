@@ -73,10 +73,11 @@ app.put("/api/contacts", (req, res, next) => {
         contactName: req.body.contactName,
         contactNumber: req.body.contactNumber,
         contactEmail: req.body.contactEmail,
+        contactMessage: req.body.contactMessage,
         contactId: req.body.contactId
     }
     let sql ='UPDATE contact SET contactName = ?, contactNumber = ?, contactEmail = ?, contactMessage = ? WHERE contactId = ?'
-    let params =[data.contactName, data.contactNumber, data.contactEmail, data.contactId, data.contactMessage]
+    let params =[data.contactName, data.contactNumber, data.contactEmail, data.contactMessage, data.contactId]
     db.run(sql, params, function (err, result) {
         if (err){
             res.status(400).json({"error": err.message})
