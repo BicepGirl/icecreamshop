@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -18,7 +18,7 @@
 <header>
     <h1>Ice Creamery</h1>
 </header>
-<section class="grid-container">
+<section class="grid-container" id="app">
 
 
     <main id="index-grid">
@@ -62,7 +62,8 @@
                 </tr>
             </table>
         </article>
-        <article>
+        <article v-for="content in icecream.slice(5)">
+            <img class="img-border" v-bind:src="content.icecreamImg" alt="{{content.icecreamName}}" width="200">
             <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Et egestas quis ipsum suspendisse ultrices. Maecenas volutpat blandit aliquam etiam erat. Mattis nunc sed blandit libero volutpat sed. Ut ornare lectus sit amet est. Feugiat nibh sed pulvinar proin gravida hendrerit lectus a. Mauris cursus mattis molestie a iaculis. Sit amet nulla facilisi morbi tempus. Auctor augue mauris augue neque gravida in fermentum. Porta non pulvinar neque laoreet suspendisse interdum consectetur libero. Vitae sapien pellentesque habitant morbi tristique senectus et. Eu ultrices vitae auctor eu augue. Sed euismod nisi porta lorem mollis. Dignissim diam quis enim lobortis scelerisque. Arcu cursus euismod quis viverra nibh cras pulvinar mattis. Aliquam nulla facilisi cras fermentum odio eu feugiat. Mattis molestie a iaculis at erat pellentesque adipiscing.
             </p>
@@ -78,7 +79,27 @@
     </main>
 
 </section>
+<script src="https://unpkg.com/vue@3"></script>
+<script>
+    Vue.createApp({
+        data() {
+            return {
 
+                icecream: [],
+            }
+        },
+        mounted(){
+            fetch('http://localhost:3000/api/icecream')
+                .then((response) => {
+                    return response.json();
+                })
+                .then((data) => {
+                    console.log(data);
+                    this.icecream = data.icecream;
+                });
+        }
+    }).mount('#app')
+</script>
 
 </body>
 </html>
