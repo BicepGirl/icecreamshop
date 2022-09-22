@@ -29,7 +29,7 @@
 
 
     <main >
-        <article >
+        <article class="creator-article" >
             <div id="app">
                 <form v-on:submit.prevent="addIceCream">
                     <label>Create your Ice Cream!</label>
@@ -40,9 +40,12 @@
                 </form>
                 <ul>
                     <li v-for="(icecreams, index) in icecream" :key="icecreams.id" :class="{prio: icecreams.prio}">
-                        {{icecreams.id}} {{icecreams.icecreamName}} {{icecreams.icecreamFlavour}} {{icecreams.icecreamContent}} {{icecreams.icecreamDescription}}
+                        {{"Name: " + icecreams.icecreamName}} <br> {{"Flavour: " + icecreams.icecreamFlavour }} <br> {{"Description: " + icecreams.icecreamDescription}}
+                        <br>
                         <button @click="deleteIceCream(index)">Delete</button>
                         <button @click="changePrio(icecreams)">Favorite</button>
+                        <br>
+                        <br>
                     </li>
                 </ul>
             </div>

@@ -195,9 +195,12 @@ header{
     font-size: 30px;
 }
 .prio{
-    color: green;
+    color: #9aff9a;
 }
 
+.creator-article{
+    padding: 30px;
+}
 
 
 
