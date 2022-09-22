@@ -48,7 +48,7 @@ h2{
     font-size: 20px;
 }
 
-ul {
+.menu {
     display: flex;
     flex-direction: column;
     text-decoration: none;
@@ -217,14 +217,14 @@ header{
         align-items: center;
 
     }
-    ul {
+    .menu {
         display: flex;
         flex-direction: row;
         text-decoration: none;
         list-style: none;
         float: right;
-
     }
+
     nav{
         padding-bottom: 70px;
     }
@@ -290,7 +290,7 @@ header{
 /* Desktop */
 @media screen and (min-width: 1025px) {
 
-    ul {
+    .menu {
         display: flex;
         flex-direction: row;
         text-decoration: none;
