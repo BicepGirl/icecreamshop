@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>I Scream</title>
+
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <section class="grid-container" id="app">
+      <header>
+        <h1>Ice Creamery</h1>
+      </header>
+      <nav>
+        <ul class="menu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="content.html">Content</a></li>
+          <li><a class="active" href="icecream.html">Menu</a></li>
+          <li><a href="creator.html">Create Ice Cream</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+
+      <stripe-pricing-table pricing-table-id="prctbl_1M4OfjJ2tCzW2jbVWGLV1SXr"
+      publishable-key="pk_test_51M4LKnJ2tCzW2jbVwjBwcCSFS7J5jQ34cNiPh2nLdgLQ4CaTJZ5Ho1J8YdsNVU4KKg6t8F50Sxsy5cMjwYFkrpKT00LJCJDF6H">
+      </stripe-pricing-table>
+    </section>
+
+    <script src="https://unpkg.com/vue@3"></script>
+    <script async src="https://js.stripe.com/v3/pricing-table.js"></script>
+
+
+  </body>
+</html>
