@@ -2,6 +2,7 @@ const express = require("express")
 const app = express()
 const cors = require('cors')
 const db = require("./database.js")
+const stripe = require('stripe')('sk_test_51M4LKnJ2tCzW2jbVHtqxOiO76N5UcMxlwQOfbT0CmD4ae4TL1v7FixBIovPCbI85rxHISoYRKlnJgkli364FLuiQ00hApIPy6f');
 
 app.use(cors())
 app.use(express.static('public'))
@@ -11,6 +12,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 const port = 3000
+
 
 // Start server
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
@@ -198,3 +200,11 @@ app.delete("/api/icecream", (req, res, next) => {
             res.json({"message":"deleted", rows: this.changes})
         })
 })
+
+app.get("/api/products"), async(req, res, next) => {
+
+   const products = await stripe.products.list({
+    limit: 3
+   })
+
+}
