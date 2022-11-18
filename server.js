@@ -1,8 +1,11 @@
 const express = require("express")
 const app = express()
+
 const cors = require('cors')
 const db = require("./database.js")
-const stripe = require('stripe')('sk_test_51M4LKnJ2tCzW2jbVHtqxOiO76N5UcMxlwQOfbT0CmD4ae4TL1v7FixBIovPCbI85rxHISoYRKlnJgkli364FLuiQ00hApIPy6f');
+const stripe = require('stripe')('sk_test_51M4LKnJ2tCzW2jbVHtqxOiO76N5UcMxlwQOfbT0CmD4ae4TL1v7FixBIovPCbI85rxHISoYRKlnJgkli364FLuiQ00hApIPy6f', {
+    maxNetWorkRetries: 3, // Maximum three tries before lockout to prevent spamming/botting
+});
 
 app.use(cors())
 app.use(express.static('public'))
@@ -14,8 +17,9 @@ app.use(bodyParser.json())
 const port = 3000
 
 
+
 // Start server
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+app.listen(port, () => console.log(`Server app listening on port ${port}!`))
 
 //CRUD FÖR KONTAKT
 app.get("/api/contacts", (req, res, next) => {
@@ -207,4 +211,13 @@ app.get("/api/products"), async(req, res, next) => {
     limit: 3
    })
 
+   
 }
+
+
+app.get("/api/cart"), async(req, res, next) => {
+    res.render("cart");
+    }
+
+
+
