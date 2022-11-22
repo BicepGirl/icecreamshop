@@ -11,6 +11,12 @@ COPY . .
 EXPOSE 3000
 CMD ["node", "server.js"]
 
-# Kör dessa commands för att köra docker filen
-#docker build . -t icecreamshop
-#docker run -dp 3000:3000 -v shop.db:/usr/src/app/shop.db icecreamshop
+
+
+# Kör dessa commands i terminalen.
+
+#Bygger en docker image för att använda, dubbelkolla att den finns via docker images
+#docker build . -t node-icecreamshop
+
+#Kör dockerfilen, verifiera med docker ps
+#docker run -dp 3000:3000 -d node-icecreamshop
