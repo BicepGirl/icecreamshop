@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible">
+    <title>I Scream</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<section class="grid-container" id="app">
+    <header>
+        <h1>Ice Creamery</h1>
+    </header>
+    <nav>
+        <ul class="menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="content.html">Content</a></li>
+            <li><a class="active" href="icecream.html">Menu</a></li>
+            <li><a href="creator.html">Create Ice Cream</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="icecream_Stripe.html"> Stripe</a></li>
+            <li><a href="cart.html"><span class="material-symbols-outlined">shopping_cart</span></a></li>
+        </ul>
+    </nav>
+
+
+    <main id="icecream-grid">
+
+        <article class="icecream-item" v-for="ice in icecream">
+            <div class="divImg">
+
+                <img class="img-border" v-bind:src="ice.icecreamImg"
+                alt="choclate ice cream in a wafer" width="260">
+
+                <h2 id="productname"> {{ ice.icecreamName }} </h2>
+                <p>{{ice.icecreamDescription}}</p>
+                <h6 id="price"> Price: ${{ice.icecreamPrice}}</h6>
+
+
+                <button class="button btn-green"
+                v-model="icemodel"
+                v-bind:src="ice.icecreamId"
+                v-on:click="addToCart" type="button"
+                >Add to Cart = ID: {{ ice.icecreamId }}
+                </button>
+
+                <button class="button btn-danger" type="button">Remove</button>
+            </div>
+
+
+        </article>
+
+        <section id="cart" class="shopping_cart">
+            <span class="material-symbols-outlined">shopping_cart</span></a>
+            <h1>Shopping Cart</h1>
+            <tbody id="carttable"></tbody>
+            <ul>
+            <li v-for="product in cart">
+                {{ product }}
+
+            </li>
+
+            </ul>
+            <span class="total">0.00</span>
+        </section>
+    </main>
+
+
+<footer>
+</footer>
+
+</section>
+
+<script src="https://unpkg.com/vue@3"></script>
+<script>
+    Vue.createApp({
+        data() {
+            return {
+
+                newProduct: [],
+                message: '',
+                icecream: [],
+                cart: []
+
+            }
+        },
+        methods: {
+            addToCart(){
+                this.cart.push(this.icemodel)
+                console.log(this.icemodel)
+                this.newProduct = '';
+            }
+
+        },
+        mounted(){
+            fetch('http://localhost:3000/api/icecream')
+                .then((response) => {
+                    return response.json();
+                })
+                .then((data) => {
+                    console.log(data);
+                    this.icecream = data.icecream;
+                });
+        }
+    }).mount('#app')
+</script>
+
+</body>
+</html>

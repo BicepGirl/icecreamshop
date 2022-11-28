@@ -1,11 +1,14 @@
+
+const stripeSecretKey = process.env.STRIPE_SECRET_KEY
+const stripePublicKey = process.env.STRIPE_PUBLIC_KEY
+
+console.log(stripeSecretKey, stripePublicKey)
+
 const express = require("express")
 const app = express()
 
 const cors = require('cors')
 const db = require("./database.js")
-const stripe = require('stripe')('sk_test_51M4LKnJ2tCzW2jbVHtqxOiO76N5UcMxlwQOfbT0CmD4ae4TL1v7FixBIovPCbI85rxHISoYRKlnJgkli364FLuiQ00hApIPy6f', {
-    maxNetWorkRetries: 3, // Maximum three tries before lockout to prevent spamming/botting
-});
 
 app.use(cors())
 app.use(express.static('public'))
@@ -16,6 +19,11 @@ app.use(bodyParser.json())
 
 const port = 3000
 
+const stripe = require('stripe')('sk_test_51M4LKnJ2tCzW2jbVHtqxOiO76N5UcMxlwQOfbT0CmD4ae4TL1v7FixBIovPCbI85rxHISoYRKlnJgkli364FLuiQ00hApIPy6f');
+console.log(stripeSecretKey, stripePublicKey)
+
+//Array for Cart
+let cart = []
 
 
 // Start server
@@ -216,7 +224,7 @@ app.get("/api/products"), async(req, res, next) => {
 
 
 app.get("/api/cart"), async(req, res, next) => {
-    res.render("cart");
+    res.json({ message: "Add item to cart" });
     }
 
 
