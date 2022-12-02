@@ -34,10 +34,10 @@
 
     <main id="icecream-grid">
 
-        <article class="icecream-item" v-for="ice in icecream">
+        <article class="icecream" v-for="ice in icecream" :key="icecream">
             <div class="divImg">
 
-                <img class="img-border" v-bind:src="ice.icecreamImg"
+                <img class="img-border" :src="ice.icecreamImg"
                 alt="choclate ice cream in a wafer" width="260">
 
                 <h2 id="productname"> {{ ice.icecreamName }} </h2>
@@ -45,14 +45,12 @@
                 <h6 id="price"> Price: ${{ice.icecreamPrice}}</h6>
 
 
-                <button class="button btn-green"
-                v-model="newprodct"
-                v-bind:src="ice.icecreamId"
-                @click="addToCart"
-                >Add to Cart = ID: {{ ice.icecreamId }}
-                </button>
+                <button v-on:click="addToCart(ice)"
+                class="button btn-green"
+                >Add to Cart </button>
 
-                <button class="button btn-danger" type="button">Remove</button>
+                <button v-on:click="removeFromCart(ice)"
+                class="button btn-danger">Remove</button>
             </div>
 
 
@@ -63,12 +61,12 @@
             <h1>Shopping Cart</h1>
             <ul>
             <li v-for="(product,n) in cart">
-                {{ product }}
+                {{ product.icecreamName }} / {{product.icecreamPrice}} SEK
 
             </li>
 
             </ul>
-            <span class="total">0.00</span>
+            <span class="total"> 0.00 SEK </span>
         </section>
     </main>
 
@@ -86,16 +84,15 @@
 
                 icecream: [],
                 cart: [],
-                newProduct: null,
+                //newProduct: null,
 
             }
         },
         methods: {
-            addToCart(){
+            addToCart(ice){
                 
-                if(!this.newProduct) return;
-                this.cart.push(newProduct);
-                this.newProduct = '';
+                this.cart.push(ice);
+                ////this.newProduct = '';
                 this.saveCart();
             },
             removeFromCart(x) {
