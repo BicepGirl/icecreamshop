@@ -27,7 +27,12 @@
             <li><a href="creator.html">Create Ice Cream</a></li>
             <li><a href="contact.html">Contact</a></li>
             <li><a href="icecream_Stripe.html"> Stripe</a></li>
-            <li><a href="cart.html"><span class="material-symbols-outlined">shopping_cart</span></a></li>
+            <li><a href="cart.html"><span class="material-symbols-outlined">shopping_cart </span>
+            <div class="wrapper"> <!-- THIS CART NEEDS TO BE BETTER LOOKIN' -->
+                <i class="fa" style="font-size: 24px;">&#xf07a</i>
+                <span> {{ cart.length }}</span>
+            </div>
+            </a></li>
         </ul>
     </nav>
 
@@ -61,17 +66,23 @@
             <h1>Shopping Cart</h1>
             <ul>
             <li v-for="(product,n) in cart">
-                {{ product.icecreamName }} / {{product.icecreamPrice}} SEK
+                {{ product.icecreamName }} / {{product.icecreamPrice}} $
 
             </li>
 
             </ul>
-            <span class="total"> 0.00 SEK </span>
+            <h2> Items </h2>
+            <p v-if="cart.length"></p>> {{ cart.length }}</p>
+            <span class="total" v-for="(product, i) in cart"></span>>
+            <p v-for="(product, i) in cart">
+            Total: {{ product.icecreamPrice * (i + 1) }} </p> </span>
+            
         </section>
     </main>
 
 
 <footer>
+
 </footer>
 
 </section>
@@ -84,15 +95,22 @@
 
                 icecream: [],
                 cart: [],
-                //newProduct: null,
+                quantity: 0
 
             }
         },
+        computed: {
+            cartTotalAmount: function() {
+                return this.cart.reduce(function(total, product) {
+
+                    return total + (cart)
+                },0);
+            }
+
+        },
         methods: {
             addToCart(ice){
-                
                 this.cart.push(ice);
-                ////this.newProduct = '';
                 this.saveCart();
             },
             removeFromCart(x) {
@@ -102,7 +120,7 @@
             saveCart() {
                 let parsed = JSON.stringify(this.cart);
                 localStorage.setItem('cart', parsed);
-            }
+            },
         },
         mounted(){
             //  Try/catch for recieving item to cart
