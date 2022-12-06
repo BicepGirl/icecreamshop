@@ -50,11 +50,11 @@
                 <h6 id="price"> Price: ${{ice.icecreamPrice}}</h6>
 
 
-                <button v-on:click="addToCart(ice)"
+                <button v-on:click="addToCart(ice), increment();"
                 class="button btn-green"
                 >Add to Cart </button>
 
-                <button v-on:click="removeFromCart(ice)"
+                <button v-on:click="removeFromCart(x), decrement();"
                 class="button btn-danger">Remove</button>
             </div>
 
@@ -64,6 +64,7 @@
         <section id="shoppingcart">
             <span class="material-symbols-outlined">shopping_cart</span></a>
             <h1>Shopping Cart</h1>
+            Quantity: {{ quantity }}
             <ul>
             <li v-for="(product,n) in cart">
                 {{ product.icecreamName }} / {{product.icecreamPrice}} $
@@ -73,9 +74,11 @@
             </ul>
             <h2> Items </h2>
             <p v-if="cart.length"></p>> {{ cart.length }}</p>
-            <span class="total" v-for="(product, i) in cart"></span>>
-            <p v-for="(product, i) in cart">
-            Total: {{ product.icecreamPrice * (i + 1) }} </p> </span>
+            <span class="total" v-for="(product, i) in cart.slice(
+                                                       cart.length - 1,
+                                                       cart.length)":key="i">
+            Total: {{ product.icecreamPrice * cart.length  }} </p> </span>
+            <!-- Loops through an array but shows only the last result -->
             
         </section>
     </main>
@@ -100,11 +103,8 @@
             }
         },
         computed: {
-            cartTotalAmount: function() {
-                return this.cart.reduce(function(total, product) {
-
-                    return total + (cart)
-                },0);
+            last() {
+                return Object.i(this.cart).length-1;
             }
 
         },
@@ -119,8 +119,18 @@
             },
             saveCart() {
                 let parsed = JSON.stringify(this.cart);
+                console.log(this.cart);
                 localStorage.setItem('cart', parsed);
             },
+            increment() {
+                this.quantity++;
+            },
+            decrement() {
+                if (this.quantity != 0)
+                {
+                    this.quantity--;
+                }
+            }
         },
         mounted(){
             //  Try/catch for recieving item to cart
