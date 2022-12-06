@@ -79,6 +79,9 @@
                                                        cart.length)":key="i">
             Total: {{ product.icecreamPrice * cart.length  }} </p> </span>
             <!-- Loops through an array but shows only the last result -->
+
+            <button v-on:click="clearCart()"
+            >Clear Cart</button>
             
         </section>
     </main>
@@ -103,9 +106,6 @@
             }
         },
         computed: {
-            last() {
-                return Object.i(this.cart).length-1;
-            }
 
         },
         methods: {
@@ -114,13 +114,20 @@
                 this.saveCart();
             },
             removeFromCart(x) {
-                this.cart.splice(x,1)
+                if (this.quantity != 0)
+                {
+                    this.cart.splice(x,1)
+                }
                 this.saveCart();
             },
             saveCart() {
                 let parsed = JSON.stringify(this.cart);
                 console.log(this.cart);
                 localStorage.setItem('cart', parsed);
+            },
+            clearCart() {
+                this.cart.splice(0);
+                this.quantity = 0;
             },
             increment() {
                 this.quantity++;
