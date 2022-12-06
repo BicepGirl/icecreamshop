@@ -50,11 +50,11 @@
                 <h6 id="price"> Price: ${{ice.icecreamPrice}}</h6>
 
 
-                <button v-on:click="addToCart(ice), increment();"
+                <button v-on:click="addToCart(ice)"
                 class="button btn-green"
                 >Add to Cart </button>
 
-                <button v-on:click="removeFromCart(x), decrement();"
+                <button v-on:click="removeFromCart(x)"
                 class="button btn-danger">Remove</button>
             </div>
 
@@ -64,7 +64,6 @@
         <section id="shoppingcart">
             <span class="material-symbols-outlined">shopping_cart</span></a>
             <h1>Shopping Cart</h1>
-            Quantity: {{ quantity }}
             <ul>
             <li v-for="(product,n) in cart">
                 {{ product.icecreamName }} / {{product.icecreamPrice}} $
@@ -100,8 +99,7 @@
             return {
 
                 icecream: [],
-                cart: [],
-                quantity: 0
+                cart: []
 
             }
         },
@@ -114,10 +112,7 @@
                 this.saveCart();
             },
             removeFromCart(x) {
-                if (this.quantity != 0)
-                {
-                    this.cart.splice(x,1)
-                }
+                this.cart.splice(x,1)
                 this.saveCart();
             },
             saveCart() {
@@ -127,16 +122,6 @@
             },
             clearCart() {
                 this.cart.splice(0);
-                this.quantity = 0;
-            },
-            increment() {
-                this.quantity++;
-            },
-            decrement() {
-                if (this.quantity != 0)
-                {
-                    this.quantity--;
-                }
             }
         },
         mounted(){
