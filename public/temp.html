@@ -28,9 +28,8 @@
             <li><a href="contact.html">Contact</a></li>
             <li><a href="icecream_Stripe.html"> Stripe</a></li>
             <li><a href="cart.html"><span class="material-symbols-outlined">shopping_cart </span>
-            <div class="wrapper"> <!-- THIS CART NEEDS TO BE BETTER LOOKIN' -->
-                <i class="fa" style="font-size: 24px;">&#xf07a</i>
-                <span> {{ cart.length }}</span>
+            <button class="open-checkout" onclick="openCheckout()"></button>
+            <span> {{ cart.length }}</span>
             </div>
             </a></li>
         </ul>
@@ -39,7 +38,7 @@
 
     <main id="icecream-grid">
 
-        <article class="icecream" v-for="ice in icecream" :key="icecream">
+        <article class="icecream" v-for="ice in icecream">
             <div class="divImg">
 
                 <img class="img-border" :src="ice.icecreamImg"
@@ -72,21 +71,39 @@
 
             </ul>
             <h2> Items </h2>
-            <p v-if="cart.length"></p>> {{ cart.length }}</p>
+            <p v-if="cart.length"></p> {{ cart.length }}</p>
             <span class="total" v-for="(product, i) in cart.slice(
                                                        cart.length - 1,
                                                        cart.length)":key="i">
             Total: {{ product.icecreamPrice * cart.length  }} </p> </span>
             <!-- Loops through an array but shows only the last result -->
 
-            <button v-on:click="clearCart()"
-            >Clear Cart</button>
+            <button v-on:click="clearCart()">Clear Cart</button>
             
         </section>
     </main>
 
 
 <footer>
+
+
+          <label for="checkout-products"><b>Products</b></label>
+          <ul>
+            <li v-for="(product,n) in cart">
+                {{ product.icecreamName }} / {{product.icecreamPrice}} $
+            </li>
+          </ul>
+      
+          <label for="psw"><b>Total Price:</b></label>
+          <span class="total" v-for="(product, i) in cart.slice(
+            cart.length - 1,
+            cart.length)":key="i">
+            Total: {{ product.icecreamPrice * cart.length  }} </p> </span>
+      
+          <button type="submit" class="btn">Confirm Purchase</button>
+          <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+        </form>
+      </div>
 
 </footer>
 
@@ -113,22 +130,35 @@
             },
             removeFromCart(x) {
                 this.cart.splice(x,1)
+                if (cart <= 0) {
+                    this.clearCart();
+                }
                 this.saveCart();
             },
             saveCart() {
                 let parsed = JSON.stringify(this.cart);
-                console.log(this.cart);
                 localStorage.setItem('cart', parsed);
+                console.log(this.cart);
             },
             clearCart() {
                 this.cart.splice(0);
+                localStorage.clear();
+            },
+            mounted: function loadCart() {
+                if(localStorage.getItem('cart')) {
+                try {
+                this.cart = JSON.stringify(localStorage.getItem('cart', parsed));
+                } catch(e) {
+                localStorage.removeItem('cart');
+                }
+            }
             }
         },
         mounted(){
             //  Try/catch for recieving item to cart
            if(localStorage.getItem('cart')) {
             try {
-                this.cart = JSON.parse(localStorage.getItem('cart'));
+                this.cart = JSON.parse(localStorage.getItem('cart', parsed));
             } catch(e) {
                 localStorage.removeItem('cart');
             }
