@@ -68,12 +68,14 @@
     Vue.createApp({
         data() {
             return {
-    
-                cart: JSON.parse(localStorage.getItem('cart')) || []
-    
+
+                icecream: [],
+                cart: []
+
             }
         },
         computed: {
+
         },
         methods: {
             addToCart(ice){
@@ -81,45 +83,32 @@
                 this.saveCart();
             },
             removeFromCart(n) {
-                if (this.cart <= 0) {
-                    this.clearCart();
-                }
-                else {
                 this.cart.splice(n,1)
+                if (cart <= 0) {
+                    this.clearCart();
                 }
                 this.saveCart();
             },
             saveCart() {
-                let parsed = JSON.parse(this.cart);
+                let parsed = JSON.stringify(this.cart);
                 localStorage.setItem('cart', parsed);
                 console.log(this.cart);
             },
             clearCart() {
-                localStorage.clear();
                 this.cart.splice(0);
-            },
-            loadCart() {
-                if(localStorage.getItem('cart')) {
-                try {
-                cart = JSON.parse(localStorage.getItem('cart', parsed));
-                } catch(e) {
-                localStorage.removeItem('cart');
-                }
+                localStorage.clear();
             }
-            },
         },
-    
         mounted(){
-            const getCart = JSON.parse.localStorage.getItem('cart')
             //  Try/catch for recieving item to cart
-           if(localStorage.getItem('cart')) {
+            if(localStorage.getItem('cart')) {
             try {
                 this.cart = JSON.parse(localStorage.getItem('cart', parsed)) = getCart;
             } catch(e) {
                 localStorage.removeItem('cart');
             }
             }
-    
+
             fetch('http://localhost:3000/api/icecream')
                 .then((response) => {
                     return response.json();
