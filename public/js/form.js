@@ -6,6 +6,7 @@ const elTxtMessage = document.querySelector('#contactMessage')
 const elTxtShowSuccess = document.querySelector('#showSuccess')
 
 
+
 function formComments(event) {
     event.preventDefault();
     let contactName = elTxtName.value;

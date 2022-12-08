@@ -13,58 +13,140 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/cart.css">
 </head>
 <body>
 
+<section class="grid-container" id="app">
+        <header>
+            <h1>Ice Creamery</h1>
+        </header>
+        <nav>
+            <ul class="menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="content.html">Content</a></li>
+                <li><a href="icecream.html">Menu</a></li>
+                <li><a href="creator.html">Create Ice Cream</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="icecream_Stripe.html"> Stripe</a></li>
+                <li><a class="active" href="cart.html"><span class="material-symbols-outlined">shopping_cart</span></a></li>
+                <span> {{ cart.length }}</span>
+                </a></li>
+            </ul>
+        </nav>
 
-<nav>
-    <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="content.html">Content</a></li>
-        <li><a href="icecream.html">Ice Cream</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a class="active" href="cart.html"><span class="material-symbols-outlined">shopping_cart</span></a></li>
-    </ul>
-</nav>
-
-<section>
-    <div class="cart-container">
+<section class="cart-section">
+    <div>
         
         <h2> Cart </h2>
-        <table>
-            <thead>
-                <tr>
-                    <th><strong>Product</strong></th>
-                    <th><strong>Price</strong></th>
-                </tr>
-            </thead>
-            <tbody id="carttable">
-            </tbody>
-          </table>
+
           <hr>
           <table id="carttotals">
             <tr>
-              <td><strong>Items</strong></td>
-              <td><strong>Total</strong></td>
-            </tr>
-            <tr>
-              <td>x <span id="itemsquantity">0</span></td>
-             
-              <td>$<span id="total">0</span></td>
+                <label for="checkout-products">
+                <table v-for="(product,n) in cart">
+                    <tr>
+                      <th class="product-name"> {{ product.icecreamName }}
+                      <img class="img-cart" :src="product.icecreamImg" 
+                      alt="choclate ice cream in a wafer"> </th>
+                      <th class ="product-price">
+                       Price: {{product.icecreamPrice}} <i class="dollar-sign">$</i>
+                       
+                    </tr> </label>
             </tr></table>
+            <h4 class="total-items" v-if="cart.length"> Items: {{ cart.length }} </h4>
+            <span class="total-price" v-for="(product, i) in cart.slice(
+                                                       cart.length - 1,
+                                                       cart.length)":key="i">
+            <strong>Total: {{ product.icecreamPrice * cart.length  }} <i class="dollar-sign">$</i> </p> </span> </strong>
+            <!-- Loops through an array but shows only the last result -->
+
+            <a href="index.html" class="button" @click="clearCart()"
+            >me hunngry me buy food</a>
+
+            <a href="icecream.html" class="button-abort" @click="clearCart()"
+            >uh oh abort abort</a>
+
+            
 
 
         </table>
-    
     </div>
+</section>
 </section>
 
 <footer>
 
 </footer>
 
-<script src="js/form.js"></script>
+<script src="https://unpkg.com/vue@3"></script>
+<script>
+Vue.createApp({
+    data() {
+        return {
 
+            cart: JSON.parse(localStorage.getItem('cart')) || []
+
+        }
+    },
+    computed: {
+    },
+    methods: {
+        addToCart(ice){
+            this.cart.push(ice);
+            this.saveCart();
+        },
+        removeFromCart(n) {
+            if (this.cart <= 0) {
+                this.clearCart();
+            }
+            else {
+            this.cart.splice(n,1)
+            }
+            this.saveCart();
+        },
+        saveCart() {
+            let parsed = JSON.parse(this.cart);
+            localStorage.setItem('cart', parsed);
+            console.log(this.cart);
+        },
+        clearCart() {
+            localStorage.clear();
+            this.cart.splice(0);
+        },
+        loadCart() {
+            if(localStorage.getItem('cart')) {
+            try {
+            cart = JSON.parse(localStorage.getItem('cart', parsed));
+            } catch(e) {
+            localStorage.removeItem('cart');
+            }
+        }
+        },
+    },
+
+    mounted(){
+        const getCart = JSON.parse.localStorage.getItem('cart')
+        //  Try/catch for recieving item to cart
+       if(localStorage.getItem('cart')) {
+        try {
+            this.cart = JSON.parse(localStorage.getItem('cart', parsed)) = getCart;
+        } catch(e) {
+            localStorage.removeItem('cart');
+        }
+        }
+
+        fetch('http://localhost:3000/api/icecream')
+            .then((response) => {
+                return response.json();
+            })
+            .then((data) => {
+                console.log(data);
+                this.icecream = data.icecream;
+            });
+        }
+}).mount('#app')
+</script>
 
 </body>
 </html>
