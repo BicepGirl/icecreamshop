@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="X-UA-Compatible">
     <title>I Scream</title>
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
@@ -15,7 +15,6 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
 <section class="grid-container" id="app">
     <header>
         <h1>Ice Creamery</h1>
@@ -28,21 +27,35 @@
             <li><a href="creator.html">Create Ice Cream</a></li>
             <li><a href="contact.html">Contact</a></li>
             <li><a href="icecream_Stripe.html"> Stripe</a></li>
-
+            <li><a href="cart.html"><span class="material-symbols-outlined">shopping_cart </span>
+            <span> {{ cart.length }}</span>
+            </div>
+            </a></li>
         </ul>
     </nav>
 
 
     <main id="icecream-grid">
-        <article class="icecream-item" v-for="ice in icecream">
-            <div class="divImg"><img class="img-border" v-bind:src="ice.icecreamImg"
-                                     alt="choclate ice cream in a wafer" width="260">
-                <h2>{{ ice.icecreamName }}</h2> <p>{{ice.icecreamDescription}}</p> <h6>Price: ${{ice.icecreamPrice}}</h6></div>
+
+        <article class="icecream" v-for="ice in icecream">
+            <div class="divImg">
+
+                <img class="img-border" :src="ice.icecreamImg"
+                alt="choclate ice cream in a wafer" width="260">
+
+                <h2 id="productname"> {{ ice.icecreamName }} </h2>
+                <p>{{ice.icecreamDescription}}</p>
+                <h6 id="price"> Price: ${{ice.icecreamPrice}}</h6>
+
+
+                <button v-on:click="addToCart(ice)"
+                class="button btn-green"
+                >Add to Cart </button>
+            </div>
 
 
         </article>
     </main>
-
 
 
 <footer>
@@ -55,17 +68,58 @@
     Vue.createApp({
         data() {
             return {
-
-                icecream: []
-
+    
+                cart: JSON.parse(localStorage.getItem('cart')) || []
+    
             }
+        },
+        computed: {
         },
         methods: {
-            anyMethod() {
-
+            addToCart(ice){
+                this.cart.push(ice);
+                this.saveCart();
+            },
+            removeFromCart(n) {
+                if (this.cart <= 0) {
+                    this.clearCart();
+                }
+                else {
+                this.cart.splice(n,1)
+                }
+                this.saveCart();
+            },
+            saveCart() {
+                let parsed = JSON.parse(this.cart);
+                localStorage.setItem('cart', parsed);
+                console.log(this.cart);
+            },
+            clearCart() {
+                localStorage.clear();
+                this.cart.splice(0);
+            },
+            loadCart() {
+                if(localStorage.getItem('cart')) {
+                try {
+                cart = JSON.parse(localStorage.getItem('cart', parsed));
+                } catch(e) {
+                localStorage.removeItem('cart');
+                }
             }
+            },
         },
+    
         mounted(){
+            const getCart = JSON.parse.localStorage.getItem('cart')
+            //  Try/catch for recieving item to cart
+           if(localStorage.getItem('cart')) {
+            try {
+                this.cart = JSON.parse(localStorage.getItem('cart', parsed)) = getCart;
+            } catch(e) {
+                localStorage.removeItem('cart');
+            }
+            }
+    
             fetch('http://localhost:3000/api/icecream')
                 .then((response) => {
                     return response.json();
@@ -74,7 +128,7 @@
                     console.log(data);
                     this.icecream = data.icecream;
                 });
-        }
+            }
     }).mount('#app')
 </script>
 

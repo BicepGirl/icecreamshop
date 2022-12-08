@@ -55,26 +55,6 @@
 
 
         </article>
-
-        <section id="shoppingcart">
-            <span class="material-symbols-outlined">shopping_cart</span></a>
-            <h1>Shopping Cart</h1>
-            <ul>
-            <li v-for="(product,n) in cart">
-                {{ product.icecreamName }} / {{product.icecreamPrice}} $
-
-            </li>
-
-            </ul>
-            <h2> Items </h2>
-            <p v-if="cart.length"></p> {{ cart.length }}</p>
-            <span class="total" v-for="(product, i) in cart.slice(
-                                                       cart.length - 1,
-                                                       cart.length)":key="i">
-            Total: {{ product.icecreamPrice * cart.length  }} </p> </span>
-            <!-- Loops through an array but shows only the last result -->
-            
-        </section>
     </main>
 
 
