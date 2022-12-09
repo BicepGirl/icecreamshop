@@ -17,7 +17,7 @@ const bodyParser = require("body-parser")
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
-const port = 3000
+const port =4000
 
 const stripe = require('stripe')('sk_test_51M4LKnJ2tCzW2jbVHtqxOiO76N5UcMxlwQOfbT0CmD4ae4TL1v7FixBIovPCbI85rxHISoYRKlnJgkli364FLuiQ00hApIPy6f');
 console.log(stripeSecretKey, stripePublicKey)
